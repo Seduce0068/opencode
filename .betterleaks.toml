@@ -1,0 +1,18 @@
+title = "betterleaks config for opencode (upstream fixture false positives)"
+
+# Upstream recordings and test suites contain synthetic credentials used by
+# HTTP recorder redaction tests. Scope by test paths AND literal dummy values
+# so a real secret committed to production paths is still detected.
+filter = '''
+filter.matchesAny(attributes["path"], [
+  `fixtures/recordings/`,
+  `(^|/)test/`,
+  `\.test\.ts$`,
+  `\.spec\.ts$`,
+  `\.stats\.yml$`,
+])
+&& filter.matchesAny(finding["secret"], [
+  `^secret$`, `^bench$`, `^REDACTED`, `^dummy`, `^test`, `^fake`,
+  `^msg_`, `^sk-test`, `^xxxx`, `^example`,
+])
+'''
