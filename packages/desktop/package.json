@@ -42,6 +42,7 @@
     "@solidjs/router": "catalog:",
     "@types/bun": "catalog:",
     "@types/node": "catalog:",
+    "@jridgewell/trace-mapping": "0.3.31",
     "@typescript/native": "catalog:",
     "app-builder-lib": "26.15.7",
     "drizzle-kit": "catalog:",
